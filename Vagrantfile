@@ -15,8 +15,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = box
   config.vm.hostname = hostname
 
-  config.vm.customize [
-  '--memory', ram
-  ]
+  config.vm.provider "virtualbox" do |v|
+    v.customize [
+      'modifyvm', :id,
+      '--name', hostname,
+      '--memory', ram
+    ]
+  end
 
 end
