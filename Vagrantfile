@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 box = 'softcover-vagrant-arch64'
-ram = '512'
+ram = '1024'
 hostname = 'softcover-vagrant'
 url = 'http://downloads.sourceforge.net/project/softcover-vagrant/softcover-vagrant-arch64.box'
 
