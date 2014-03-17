@@ -17,14 +17,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = hostname
   config.vm.box_url = url
 
-  #Windows - Comment out for other systems
-  # TODO: Add logic for 
+  ########### Windows - Comment out for other systems
+  # TODO: Add logic
       config.vm.network "public_network"
       config.trigger.after [:up,:reload, :resume], { :execute => "share.bat"}
       config.trigger.before [:halt, :reload, :destroy, :suspend], { :execute => "share-del.bat"}
       $ipaddr = "sleep 10 
                ip address | grep 'eth1' | grep inet | awk '{print $2}' |sed 's@\/24@@g' > /vagrant/ipaddr"
       config.vm.provision "shell", inline: $ipaddr
+  ############ End Windows Section
 
   config.vm.provider "virtualbox" do |v|
     v.customize [

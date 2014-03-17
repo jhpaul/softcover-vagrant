@@ -17,7 +17,9 @@ The box should automatically download, but can be downloaded separately here (fa
 [https://sourceforge.net/projects/softcover-vagrant/files/arch64-base.box/download](https://sourceforge.net/projects/softcover-vagrant/files/arch64-base.box/download)
 
 ##Setup
+
 ** Non-windows users will need to comment out a section in the Vagrantfile.**
+
 ###Basic
 ```
 git clone https://github.com/jhpaul/softcover-vagrant.git
