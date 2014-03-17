@@ -12,6 +12,12 @@ pacman -S wget python2 ruby libxml2 libxslt --noconfirm
 ln -fs /usr/bin/python2 /usr/bin/python
 export PATH=$PATH:/home/vagrant/.gem/ruby/2.1.0/bin
 sudo -u vagrant echo export PATH=$PATH:/home/vagrant/.gem/ruby/2.1.0/bin >> /home/vagrant/.bashrc
+umount -f /tmp
+systemctl mask tmp.mount
+dd if=/dev/zero of=/var/512mb.swap bs=1M count=512
+mkswap /var/512mb.swap
+swapon /var/512mb.swap
+
 #} &> ~/provision.log
 # Build Softcover
 echo "Installing softcover..."
@@ -20,7 +26,7 @@ sudo -u vagrant sc check
 echo "Installing softcover Dependencies..."
 # Satisfy Check
 pacman -S texlive-most imagemagick nodejs phantomjs calibre inkscape zip unzip --noconfirm
-packer -S jdk
+packer -S jdk --noconfirm
 wget -c -O kindlegen.tar.gz http://kindlegen.s3.amazonaws.com/kindlegen_linux_2.6_i386_v2_9.tar.gz
 tar xvf kindlegen.tar.gz
 rm -f /usr/bin/kindlegen
