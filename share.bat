@@ -1,4 +1,6 @@
+@echo off
 set /p ipaddr=<ipaddr
 rd share
-echo %ipaddr%
-mklink /d share \\%ipaddr%\vagrant\
+ECHO Vagrant IP: %ipaddr%
+net use s: \\%ipaddr%\vagrant-share
+ECHO Vagrat-Share added on S:\

@@ -19,8 +19,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = url
 
   #on windows
-  # config.vm.synced_folder ".", "/vagrant", disabled: true
-  config.trigger.after [:up,:reload], { :execute => "share.bat"}
+  #config.vm.synced_folder ".", "/vagrant", disabled: "true"
+  #config.vm.synced_folder ".", "/vagrant/vagrant"
+  config.trigger.after [:up,:reload, :resume], { :execute => "share.bat"}
+  config.trigger.before [:halt, :reload, :destroy, :suspend], { :execute => "share-del.bat"}
 
   config.vm.provider "virtualbox" do |v|
     v.customize [
@@ -29,10 +31,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       '--memory', ram
     ]
   end
-
 $ipaddr = "sleep 10 
            ip address | grep 'eth1' | grep inet | awk '{print $2}' |sed 's@\/24@@g' > /vagrant/ipaddr"
-  config.vm.provision "shell",
-    inline: $ipaddr
+  config.vm.provision "shell", inline: $ipaddr
+  config.vm.provision "shell", path: "provision.sh"
+
 
 end
