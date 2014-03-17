@@ -2,7 +2,7 @@
 
 ##Status
 
-Currently box boots and works in windows. Have not yet updated Vagrantfile with logic for multiple systems. .
+Currently box boots and works in windows. Have not yet updated Vagrantfile with logic for multiple systems.
 
 Some lingering errors when building books, but softcover installs completely.
 
@@ -17,7 +17,7 @@ The box should automatically download, but can be downloaded separately here (fa
 [https://sourceforge.net/projects/softcover-vagrant/files/arch64-base.box/download](https://sourceforge.net/projects/softcover-vagrant/files/arch64-base.box/download)
 
 ##Setup
-
+** Non-windows users will need to comment out a section in the Vagrantfile.**
 ###Basic
 ```
 git clone https://github.com/jhpaul/softcover-vagrant.git
