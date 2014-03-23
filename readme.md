@@ -2,9 +2,9 @@
 
 ##Status
 
-Currently box boots and works in windows. Have not yet updated Vagrantfile with logic for multiple systems.
+Box should work on all systems. Windows users should use the Vagrantfile in `./win`. OXS/Linux users should use the `./nix` folder.
 
-Some lingering errors when building books, but softcover installs completely.
+Some lingering errors when building books, but softcover installs completely. Biggest issue seems to be with epub generation.
 
 --------------------------------------
 ##Overview
@@ -29,7 +29,7 @@ vagrant up
 ###Manual Download
 
 ```
-wget wget -O arch64-base.box https://sourceforge.net/projects/softcover-vagrant/files/arch64-base.box/download
+wget -O arch64-base.box https://sourceforge.net/projects/softcover-vagrant/files/arch64-base.box/download
 vagrant add arch64-base arch64-base.box
 git clone https://github.com/jhpaul/softcover-vagrant.git
 vagrant up
