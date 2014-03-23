@@ -23,10 +23,13 @@ swapon /var/512mb.swap
 echo "Installing softcover..."
 sudo -u vagrant gem install softcover
 sudo -u vagrant sc check
+sudo -u vagrant gem install bundler
 echo "Installing softcover Dependencies..."
 # Satisfy Check
 pacman -S texlive-most imagemagick nodejs phantomjs calibre inkscape zip unzip --noconfirm
 packer -S jdk --noconfirm
+export PATH=$PATH:/opt/java/bin/
+sudo -u vagrant echo export PATH=$PATH:/opt/java/bin/ >> /home/vagrant/.bashrc
 wget -c -O kindlegen.tar.gz http://kindlegen.s3.amazonaws.com/kindlegen_linux_2.6_i386_v2_9.tar.gz
 tar xvf kindlegen.tar.gz
 rm -f /usr/bin/kindlegen
