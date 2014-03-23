@@ -2,5 +2,6 @@
 set /p ipaddr=<ipaddr
 rd share
 ECHO Vagrant IP: %ipaddr%
-net use s: \\%ipaddr%\vagrant-share
-ECHO Vagrat-Share added on S:\
+REM Using S:\ by default. Change if conflits with existing drive.
+net use t: \\%ipaddr%\vagrant-share
+ECHO Vagrat-Share added on t:\
